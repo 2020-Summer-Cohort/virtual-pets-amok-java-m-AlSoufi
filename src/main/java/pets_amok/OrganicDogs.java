@@ -1,42 +1,73 @@
 package pets_amok;
 
-public class OrganicDogs extends VirtualPet{
+public class OrganicDogs extends Dogs implements OrganicPets {
 
+    protected int cageMess;
+    protected int hunger;
+    protected int thirst;
 
     public OrganicDogs(String name, String desc) {
         super(name, desc);
-        int cageCleanliness;
-             }
+        cageMess = 50;
+        hunger = 50;
+        thirst = 50;
+    }
 
-    @Override
-    public String getName() {
-        return super.getName();
+    public void feed() {
+        hunger -= 20;
+        happiness += 10;
+        cageMess += 10;
+    }
+
+    public void water() {
+        thirst -= 20;
+        happiness += 10;
+        cageMess += 10;
     }
 
     @Override
-    public String getDesc() {
-        return super.getDesc();
+    public void walk() {
+        cageMess -= 20;
+        happiness += 20;
+        health += 10;
+        hunger += 5;
+        thirst += 5;
     }
 
     @Override
-    public int getHappiness() {
-        return super.getHappiness();
+    public void play() {
+        happiness += 20;
+        hunger += 10;
+        thirst += 10;
+        health += 10;
     }
 
     @Override
-    public int getHealth() {
-        return super.getHealth();
+    public int tick() {
+        hunger += (5 + generateRandom());
+        thirst += (5 + generateRandom());
+        happiness -= (5 + generateRandom());
+        cageMess += (5 + generateRandom());
+        return 0;
     }
-
-    public int getcageCleanliness() {
-        return getcageCleanliness();
-    }
-
 
     @Override
-    public void walkingDogs() {
-        super.walkingDogs();
+    public int getHunger() {
+        return hunger;
     }
 
+    public int getCageMess() {
+        return cageMess;
+    }
 
+    public void cleanCage() {
+        cageMess = 0;
+        happiness += 10;
+        health += 10;
+    }
+
+    @Override
+    public int getThirst() {
+        return thirst;
+    }
 }

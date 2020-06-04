@@ -1,35 +1,47 @@
 package pets_amok;
 
-public class VirtualPet {
+import java.util.Random;
+
+public abstract class VirtualPet {
+
+    protected Random generator = new Random();
 
     protected String name;
     protected String desc;
-    protected  int health = 100;
-    protected int happiness = 150;
+    protected int health;
+    protected int happiness;
 
     public VirtualPet(String name, String desc) {
         this.name = name;
         this.desc = desc;
-        this.health = health = 100;
-        this.happiness = happiness = 150;
+        health = 50;
+        happiness = 50;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getDesc() {
-        return desc;
+    public int getHealth() {
+        return health;
     }
 
     public int getHappiness() {
         return happiness;
     }
 
-    public int getHealth() {
-        return health;
+    public abstract void play();
+
+    public int generateRandom() {
+        return generator.nextInt(10);
     }
 
-    public void walkingDogs() {
+    @Override
+    public String toString() {
+        return ("[" + name + "] " + desc);
+    }
+
+    public void decreaseHealth() {
+        health -= 10;
     }
 }

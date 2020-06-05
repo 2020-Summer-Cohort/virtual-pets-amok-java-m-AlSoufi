@@ -51,32 +51,30 @@ public class VirtualPetShelterApp {
             }
             System.out.println("\nThank you for volunteering at The Neighborhood Virtual Pet Shelter!");
             System.out.println("\nThis is the status of our pets currently: ");
-            System.out.println("\nName\t              |Hapiness\t   |Health\t |Hunger\t|Thirst\t|OilLvl\t|CageDirtiness");
-            System.out.println("----------------------|------------|---------|----------|-------|-------|---------------");
+            System.out.println("\nName           |Hapiness   |Health     |Hunger  |Thirst|OilLvl    |CageDirtiness");
+            System.out.println("---------------|-----------|-----------|--------|------|----------|---------------");
 
             for (VirtualPet currentPet : shelter.pets()) {
-                System.out.print(currentPet.getName() + "\t                  |" + ((VirtualPet) currentPet).getHappiness() + "    \t   |"
-                        + ((VirtualPet) currentPet).getHealth() + " \t     |");
-                if (currentPet instanceof OrganicPets) { System.out.print(((OrganicPets) currentPet).getHunger() + " \t            |"
-                            + ((OrganicPets) currentPet).getThirst() + "  \t                 |N/A\t|");
+                System.out.print(currentPet.getName() + "            |" + ((VirtualPet) currentPet).getHappiness() + "         |"
+                        + ((VirtualPet) currentPet).getHealth() + "         |");
+                if (currentPet instanceof OrganicPets) {
+                    System.out.print(((OrganicPets) currentPet).getHunger() + "       |"
+                            + ((OrganicPets) currentPet).getThirst() + "     |N/A      |");
                 } else if (currentPet instanceof RoboticPets) {
-                    System.out.print("N/A\t    |N/A\t|" + ((RoboticPets) currentPet).getOilLevel() + " \t|");
+                    System.out.print("N/A     |N/A   |" + ((RoboticPets) currentPet).getOilLevel());
                 }
                 if (currentPet instanceof OrganicDogs) {
-                    System.out.print("" + ((OrganicDogs) currentPet).getCageMess() + "\t  |");
+                    System.out.print("" + ((OrganicDogs) currentPet).getCageMess());
                 } else {
-                    System.out.print("N/A\t        |");
+                    System.out.print("        |N/A           ");
                 }
                 System.out.print("\n");
-
             }
-
             System.out.println("The litterbox messiness level is: " + shelter.getLitterBox());
             System.out.println("\nWhat would you like to do next?");
             System.out.println(
                     "\n1. Feed the organic pets. \n2. Water the organic pets. \n3. Play with a pet. \n4. Adopt a pet. \n5. Admit a pet. \n6. Clean Cages \n7. Clean Litterbox \n8. Walk Dogs \n9. Maintain all RoboPets by oiling them. \n10. Do nothing. \n11. Quit.");
             String userImput = input.nextLine();
-
             switch (userImput) {
                 case "1":
                     shelter.feedAllOrganicPets();
@@ -117,7 +115,7 @@ public class VirtualPetShelterApp {
                             String description = input.nextLine();
                             OrganicPets x = new OrganicDogs(name, description);
                             shelter.adoptPet(x);
-                            System.out.println("Thanks! We'll take good care of " + x.getName()+".");
+                            System.out.println("Thanks! We'll take good care of " + x.getName() + ".");
                         } else if (response3.equalsIgnoreCase("cat")) {
                             System.out.println("Great! What is the cat's name?");
                             String name = input.nextLine();
@@ -126,7 +124,7 @@ public class VirtualPetShelterApp {
                             String description = input.nextLine();
                             OrganicPets y = new OrganicCats(name, description);
                             shelter.adoptPet(y);
-                            System.out.println("Thanks! We'll take good care of " + y.getName()+".");
+                            System.out.println("Thanks! We'll take good care of " + y.getName() + ".");
                         }
 
                     } else if (response2.equalsIgnoreCase("robotic")) {
@@ -141,7 +139,7 @@ public class VirtualPetShelterApp {
                             String description = input.nextLine();
                             RoboticPets r = new RoboticDogs(name, description);
                             shelter.adoptPet(r);
-                            System.out.println("Thanks! We'll take good care of " + r.getName()+".");
+                            System.out.println("Thanks! We'll take good care of " + r.getName() + ".");
 
                         } else if (response3.equalsIgnoreCase("cat")) {
                             System.out.println("Great! What is the cat's name?");
@@ -150,7 +148,7 @@ public class VirtualPetShelterApp {
                             String description = input.nextLine();
                             RoboticPets w = new RoboticCats(name, description);
                             shelter.adoptPet(w);
-                            System.out.println("Thanks! We'll take good care of " + w.getName()+".");
+                            System.out.println("Thanks! We'll take good care of " + w.getName() + ".");
                         }
                     }
                     break;
@@ -160,7 +158,7 @@ public class VirtualPetShelterApp {
                     break;
                 case "7":
                     shelter.cleanLitterBox();
-                    System.out.println("You cleaned the litterbox!");
+                    System.out.println("You cleaned the organic cats' litterbox!");
                     break;
                 case "8":
                     shelter.walkAllDogs();

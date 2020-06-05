@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VirtualPetShelter {
-    // Map of pets and attributes
     private int litterBox = 50;
 
     private Map<String, VirtualPet> petMap = new HashMap<String, VirtualPet>();
@@ -22,7 +21,7 @@ public class VirtualPetShelter {
         for (VirtualPet pet : pets()) {
             if (pet instanceof RoboticPets) {
                 ((RoboticPets) pet).oilPet();
-                ((RoboticPets) pet).becomeHappy();
+                ((RoboticPets) pet).increaseHappines();
             }
         }
     }
@@ -70,38 +69,38 @@ public class VirtualPetShelter {
         litterBox += 5;
     }
 
-    // Tick method
+
     void tickAllPets() {
         for (VirtualPet pet : pets()) {
             if (pet instanceof OrganicCats) {
                 litterBox += ((OrganicCats) pet).tick();
             }
             if (!(pet instanceof OrganicCats))
-                if (pet instanceof OrganicDogs){
+                if (pet instanceof OrganicDogs) {
                     ((OrganicDogs) pet).tick();
                 }
-            if (pet instanceof RoboticPets){
+            if (pet instanceof RoboticPets) {
                 ((RoboticPets) pet).tick();
             }
         }
     }
 
-    // Method returning all pets in the shelter
+
     public Collection<VirtualPet> pets() {
         return petMap.values();
     }
 
-    // Method returning a single pet by name
+
     public VirtualPet getPet(String name) {
         return petMap.get(name);
     }
 
-    // Method for playing with one pet
+
     public void playWithSinglePet(VirtualPet player) {
         player.play();
     }
 
-    // Method to adopt a pet
+
     public void adoptPet(VirtualPet pet) {
         petMap.remove(pet.getName());
     }

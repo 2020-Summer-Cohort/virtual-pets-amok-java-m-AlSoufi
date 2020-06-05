@@ -38,7 +38,7 @@ public class RoboticDogs extends Dogs implements RoboticPets {
     }
 
     @Override
-    public void becomeHappy() {
+    public void increaseHappines() {
         happiness += 10;
         health += 10;
     }
